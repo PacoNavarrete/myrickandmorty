@@ -3,3 +3,4 @@ export * from './Card';
 export * from './Filter';
 export * from './Pagination';
 export * from './Search';
+export * from './Navbar';
