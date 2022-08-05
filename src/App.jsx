@@ -3,26 +3,11 @@ import 'bootstrap/dist/js/bootstrap';
 import React, { useState, useContext, useEffect } from 'react';
 import { Card, Filter, Pagination, Search, Navbar } from './components';
 import './App.css';
-import useFetchCharacters from './hooks/useFetchCharacters';
+
 
 const App = () => {
-  // const { info, results } = useFetchCharacters();
-  useFetchCharacters();
 
-  // console.log(info);
-  // const api = `https://rickandmortyapi.com/api/character/?page=4`;
-
-  // const [fetchedData, setFetchedData] = useState([]);
-  // const { info, results } = fetchedData;
-  // console.log(results);
-
-  // useEffect(() => {
-  //   (async function () {
-  //     const data = await fetch(api).then((resp) => resp.json());
-  //     setFetchedData(data);
-  //     // console.log(data);
-  //   })();
-  // }, [api]);
+  const [counter, setCounter] = useState(10)
 
   return (
     <div className="App">
@@ -31,12 +16,16 @@ const App = () => {
         <div className="row">
           Filter component will be placed here
           <div className="col-lg-8 col-12">
-            <div className="row">Card component will be placed here</div>
+            <div className="row">
+              <Card />
+            </div>
+            <h2>{counter}</h2>
+            <button onClick={ () => {setCounter (counter + 1)} }>+1</button>
           </div>
         </div>
       </div>
     </div>
   );
-};
+  };
 
 export default App;

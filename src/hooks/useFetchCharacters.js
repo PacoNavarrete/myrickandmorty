@@ -1,19 +1,26 @@
 import { useEffect, useState } from 'react';
 import getCharacters from '../helpers/getCharacters';
+const { data, api  } = await getCharacters(); // !poner atencion al comportamiento de esta implementacion!
 
 const useFetchCharacters = () => {
-  const [fetchedData, setFetchedData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [ characters, setCharacters ] = useState( [] );
+  const [ isLoading, setIsLoading ] = useState( true );
 
-  const getNewcharacters = async () => {
-    const newCharacters = await getCharacters();
-    setFetchedData(newCharacters);
+  const getNewCharacters = async () => {
+    const newCharacters = await data; // !poner atencion al comportamiento de esta implemetacion!
+    setCharacters(newCharacters);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    getNewcharacters();
-  }, []);
+    getNewCharacters();
+  }, [api]);
+
+  return {
+    characters,
+    isLoading
+  };
+
 };
 
 export default useFetchCharacters;
