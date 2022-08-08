@@ -14,3 +14,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.card {
+  border: 3px solid #0bd712;
+  border-radius: 12px;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+
+.content {
+  padding: 10px;
+}
+.img {
+  border-radius: 10px 10px 0 0;
+}
+.badge {
+  top: 10px; right: 20px;
+  font-size: 17px;
+}
