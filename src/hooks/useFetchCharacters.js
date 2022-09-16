@@ -1,21 +1,39 @@
 import { useEffect, useState } from 'react';
-import getCharacters from '../helpers/getCharacters';
-const { data, api  } = await getCharacters();
 
-const useFetchCharacters = () => {
-  const [ characters, setCharacters ] = useState( [ ] );
+
+const useFetchCharacters =  ( pageNum, search ) => {
+
+
+  const url = `https://rickandmortyapi.com/api/character/?page=${ pageNum }&name=${ search }`;
+
+  
+  const [ results, setResults ] = useState( [ ] );
+  const [ pageCount, setPageCount ] = useState( 1 )
+ 
 
   const getNewCharacters = async () => {
-    const newCharacters = await data;
-    setCharacters(newCharacters);
+    
+    const resp = await fetch( url );
+    const data = await resp.json();
+    setResults( data.results )
+    
+    try {
+      setPageCount( data.info.pages )
+    } catch (error) {
+      console.warn(`data not fetched due to '${search}' does not exist in the API`)
+      return;
+    }
+    
   };
-
+  
   useEffect(() => {
     getNewCharacters();
-  }, [api]);
+  }, [url]);
 
-  return characters
-
+  return {
+    results,
+    pageCount
+   }
 };
 
 export default useFetchCharacters;
