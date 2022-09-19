@@ -1,10 +1,5 @@
-# This project is under development...
+#React App + vite
 
-Edited on visual studio code and stackblitz.
+Part of this code was done with stackblitz and major until finish it with visiual estudio code.
 
-
-
-
-# vitejs-vite-jd28bw
-
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/vitejs-vite-jd28bw)
+App online visit: https://myrickandmorty.netlify.app
